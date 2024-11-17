@@ -10,7 +10,7 @@
 
 static const char *TAG = "client:server:enabled";
 
-esp_err_t network_configuration_handler(httpd_req_t *req)
+esp_err_t configuration_handler(httpd_req_t *req)
 {
     ESP_LOGI(TAG, "Received network configuration POST request.");
     /* Destination buffer for content of HTTP POST request.

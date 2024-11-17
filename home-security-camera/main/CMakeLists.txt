@@ -5,7 +5,7 @@ set(srcs
     "communications/wifi.c"
     "communications/server/server.c"
     "communications/server/handlers/index.c"
-    "communications/server/handlers/network_configuration.c"
+    "communications/server/handlers/configuration.c"
     "communications/server/handlers/stream.c"
     "storage/spiffs.c"
     "storage/nvs_helpers.c"

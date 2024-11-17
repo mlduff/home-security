@@ -49,6 +49,7 @@ esp_err_t stream_handler(httpd_req_t *req) {
             }
         }
 
+        // TODO: Replace with on-error GOTO
         if (res == ESP_OK) {
             size_t hlen = snprintf(part_buf, sizeof(part_buf), _STREAM_PART, _jpg_buf_len);
             res = httpd_resp_send_chunk(req, part_buf, hlen);
@@ -72,6 +73,6 @@ esp_err_t stream_handler(httpd_req_t *req) {
         }
         vTaskDelay(10 / portTICK_PERIOD_MS);
     }
-    
+
     return res;
 }

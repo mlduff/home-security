@@ -11,8 +11,7 @@ static const char *TAG = "server";
 
 esp_err_t index_handler(httpd_req_t *req);
 esp_err_t stream_handler(httpd_req_t *req);
-esp_err_t network_configuration_handler(httpd_req_t *req);
-esp_err_t network_configuration_options_handler(httpd_req_t *req);
+esp_err_t configuration_handler(httpd_req_t *req);
 
 /* URI handler structure for GET /uri */
 httpd_uri_t get_index = {
@@ -30,10 +29,10 @@ httpd_uri_t get_stream = {
     .user_ctx = NULL
 };
 
-httpd_uri_t post_network_configuration = {
-    .uri      = "/network",
+httpd_uri_t post_configuration = {
+    .uri      = "/config",
     .method   = HTTP_POST,
-    .handler  = network_configuration_handler,
+    .handler  = configuration_handler,
     .user_ctx = NULL
 };
 
@@ -51,7 +50,7 @@ httpd_handle_t server_start(void)
         /* Register URI handlers */
         httpd_register_uri_handler(server, &get_index);
         httpd_register_uri_handler(server, &get_stream);
-        httpd_register_uri_handler(server, &post_network_configuration);
+        httpd_register_uri_handler(server, &post_configuration);
     }
     if (server != NULL) {
         ESP_LOGI(TAG, "Server started successfully.");
